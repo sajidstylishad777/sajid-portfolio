@@ -62,7 +62,7 @@ export const projects: Project[] = [
     category: "Restaurant Interior",
     year: "2022",
     location: "Al Jewn Tower,Abu Dhabi, UAE",
-    image: "/images/Cafe-pro.jpg",
+    image: "/images/cafe-pro.jpg",
     gallery: [
       "/images/Starplan.png",
       "/images/Starbucks.png",

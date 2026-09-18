@@ -1,0 +1,145 @@
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f4f0e7;
+  --ink: #1a1815;
+  --graphite: #77736b;
+  --bronze: #8c6e48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Paper grain texture, built entirely from CSS so no image asset is needed */
+.paper-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(rgba(26, 24, 21, 0.05) 0.6px, transparent 0.6px),
+    radial-gradient(rgba(26, 24, 21, 0.035) 0.6px, transparent 0.6px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1.5px 2.5px;
+}
+
+.paper-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    transparent 55%,
+    rgba(26, 24, 21, 0.05) 100%
+  );
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--beige, #ddd3c0);
+  border: 2px solid var(--paper);
+  border-radius: 0;
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 1.5px solid var(--bronze);
+  outline-offset: 3px;
+}
+
+/* Custom cursor cursor-none only where supported (desktop, coarse pointer excluded via JS) */
+.cursor-none-desktop {
+  cursor: none;
+}
+
+.hairline {
+  height: 1px;
+  background: rgba(26, 24, 21, 0.16);
+}
+
+.vhairline {
+  width: 1px;
+  background: rgba(26, 24, 21, 0.16);
+}
+
+/* Drafting margin line reminiscent of engineering paper */
+.margin-rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(1.25rem, 6vw, 5.5rem);
+  width: 1px;
+  background: rgba(26, 24, 21, 0.14);
+  z-index: 0;
+}
+
+.sketch-stroke {
+  stroke: rgba(26, 24, 21, 0.55);
+  fill: none;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
